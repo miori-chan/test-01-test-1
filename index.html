@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chubby Bear Cafe & Bakery - รีวิวร้านสุดคิวท์</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Kanit & Mali for extra cuteness -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Mali:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for cute icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        kanit: ['Kanit', 'sans-serif'],
+                        mali: ['Mali', 'cursive'],
+                    },
+                    colors: {
+                        pastelPink: '#ffd1dc',
+                        pastelCream: '#fff5e1',
+                        pastelBlue: '#d0f0fd',
+                        pastelPurple: '#e8dff5',
+                        pastelGreen: '#d4edda',
+                        softBrown: '#8d6e63',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #fce4ec;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .cute-font {
+            font-family: 'Mali', cursive;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="flex justify-center items-center min-h-screen p-0 sm:p-4">
+    <div id="app" class="w-full sm:max-w-[420px] h-[100vh] sm:h-[840px] bg-white sm:rounded-[3rem] shadow-2xl flex flex-col overflow-hidden relative border-4 border-pastelPink">
+        
+        <!-- TOP BANNER & HEADER SECTION -->
+        <div class="relative w-full h-48 bg-pastelCream shrink-0">
+            <img src="https://placehold.co/600x300/ffd1dc/8d6e63?text=🐻+Chubby+Bear+Cafe+Banner" alt="Shop Banner" class="w-full h-full object-cover">
+            
+            <div class="absolute top-4 left-4 right-4 flex justify-between items-center z-10">
+                <button onclick="showToast('กดแชร์ร้านนี้แล้วจ้า! 💖')" class="w-9 h-9 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-softBrown shadow-md hover:bg-white transition">
+                    <i class="fa-solid fa-share-nodes text-sm"></i>
+                </button>
+                <button onclick="toggleSideMenu()" class="w-9 h-9 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-rose-500 shadow-md hover:bg-white transition">
+                    <i class="fa-solid fa-heart text-sm"></i>
+                </button>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+        </div>
+        <!-- PROFILE & SHOP INFO SECTION -->
+        <div class="px-5 pt-2 pb-3 bg-white relative -mt-12 rounded-t-[2.5rem] shadow-sm shrink-0 z-20">
+            <div class="flex justify-between items-end">
+                <div class="relative -mt-14 mb-1">
+                    <div class="w-20 h-20 rounded-full border-4 border-white shadow-lg overflow-hidden bg-pastelPink animate-float">
+                        <img src="https://placehold.co/200x200/ffd1dc/8d6e63?text=🐾" alt="Store Logo" class="w-full h-full object-cover">
+                    </div>
+                    <span class="absolute bottom-0 right-0 w-6 h-6 bg-green-400 border-2 border-white rounded-full flex items-center justify-center text-[10px] text-white">
+                        <i class="fa-solid fa-check"></i>
+                    </span>
+                </div>
+                <div class="flex items-center gap-1 bg-amber-50 px-3 py-1.5 rounded-full border border-amber-200 shadow-sm">
+                    <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+                    <span class="font-bold text-amber-800 text-sm">4.9</span>
+                    <span class="text-xs text-amber-600">(128 รีวิว)</span>
+                </div>
+            </div>
+            <div class="mt-2">
+                <div class="flex items-center gap-2">
+                    <h1 class="cute-font font-bold text-xl text-slate-800">Chubby Bear Cafe 🧁</h1>
+                    <span class="bg-pastelPink/50 text-softBrown text-[10px] px-2 py-0.5 rounded-full font-medium">คาเฟ่ & เบเกอรี่</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-1 line-clamp-2">
+                    คาเฟ่สไตล์มินิมอลอบอุ่นหัวใจ ฮีลใจคนรักของหวาน เค้กโฮมเมดสูตรคุณแม่ 🍰 มุมถ่ายรูปเพียบ แวะมาเติมความหวานกันน้า ~ ✨
+                </p>
+            </div>
+            <div class="flex items-center gap-3 mt-3 text-[11px] text-slate-600 overflow-x-auto no-scrollbar">
+                <div class="flex items-center gap-1 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-100 shrink-0">
+                    <i class="fa-regular fa-clock text-rose-400"></i> 10:00 - 20:00 น.
+                </div>
+                <div class="flex items-center gap-1 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-100 shrink-0">
+                    <i class="fa-solid fa-location-dot text-rose-400"></i> อารีย์ ซอย 3, กทม.
+                </div>
+                <div class="flex items-center gap-1 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-100 shrink-0">
+                    <i class="fa-solid fa-wifi text-rose-400"></i> มี Wi-Fi ฟรี
+                </div>
+            </div>
+        </div>
+        <!-- NAVIGATION TABS -->
+        <div class="flex border-b border-slate-100 bg-white shrink-0">
+            <button onclick="switchTab('highlights')" id="btn-highlights" class="flex-1 py-3 text-xs font-semibold text-rose-500 border-b-2 border-rose-500 transition">
+                <i class="fa-solid fa-fire text-amber-500 mr-1"></i> เมนู & สินค้า
+            </button>
+            <button onclick="switchTab('reviews')" id="btn-reviews" class="flex-1 py-3 text-xs font-semibold text-slate-400 border-b-2 border-transparent transition">
+                <i class="fa-solid fa-comments text-pastelPink mr-1"></i> รีวิวทั้งหมด (128)
+            </button>
+        </div>
+        <div class="flex-1 overflow-y-auto bg-slate-50 relative pb-16">
+            <!-- TAB 1: HIGHLIGHTS & MENU & CATEGORIES & SEARCH -->
+            <div id="tab-highlights" class="p-4 space-y-4">
+                
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">
+                        <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                    </span>
+                    <input type="text" id="searchInput" oninput="filterMenuItems()" placeholder="ค้นหาเมนูอร่อย เค้ก ชาเขียว หรือเครื่องดื่ม..." class="w-full pl-10 pr-4 py-2.5 text-xs bg-white rounded-2xl border border-slate-200 focus:outline-none focus:border-rose-400 shadow-sm transition">
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-800 text-xs mb-2">🏷️ หมวดหมู่สินค้า</h3>
+                    <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+                        <button onclick="filterCategory('all', this)" class="category-btn bg-rose-500 text-white text-[11px] px-3 py-1.5 rounded-xl font-medium shadow-sm shrink-0 transition flex items-center gap-1">
+                            <span>✨ ทั้งหมด</span>
+                        </button>
+                        <button onclick="filterCategory('cake', this)" class="category-btn bg-white text-slate-600 border border-slate-200 text-[11px] px-3 py-1.5 rounded-xl font-medium shadow-sm shrink-0 transition flex items-center gap-1">
+                            <span>🍰 เค้ก & เบเกอรี่</span>
+                        </button>
+                        <button onclick="filterCategory('drink', this)" class="category-btn bg-white text-slate-600 border border-slate-200 text-[11px] px-3 py-1.5 rounded-xl font-medium shadow-sm shrink-0 transition flex items-center gap-1">
+                            <span>🧋 เครื่องดื่ม & ชา</span>
+                        </button>
+                        <button onclick="filterCategory('croissant', this)" class="category-btn bg-white text-slate-600 border border-slate-200 text-[11px] px-3 py-1.5 rounded-xl font-medium shadow-sm shrink-0 transition flex items-center gap-1">
+                            <span>🥐 ครอฟเฟิล</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center pt-1">
+                    <h2 class="font-bold text-slate-800 text-sm flex items-center gap-2">
+                        <span>🌟 เมนูห้ามพลาดประจำร้าน</span>
+                    </h2>
+                    <span class="text-[11px] text-rose-500 font-medium">ยอดฮิต</span>
+                </div>
+                <div id="menuGrid" class="grid grid-cols-2 gap-3">
+                    <div class="menu-item bg-white p-3 rounded-2xl shadow-sm border border-slate-100 flex flex-col justify-between" data-category="cake" data-name="สตอเบอร์รี่ ชอตเค้ก">
+                        <div>
+                            <div class="w-full h-28 rounded-xl overflow-hidden mb-2 bg-pink-50">
+                                <img src="https://placehold.co/300x200/ffd1dc/8d6e63?text=Strawberry+Cake" alt="Cake" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="font-bold text-xs text-slate-800 line-clamp-1">สตอเบอร์รี่ ชอตเค้ก 🍓</h3>
+                            <p class="text-[10px] text-slate-400 line-clamp-1 mt-0.5">ครีมสดละมุนลิ้น สอดไส้สตอเบอร์รี่ฉ่ำๆ</p>
+                        </div>
+                        <div class="flex justify-between items-center mt-3">
+                            <span class="text-xs font-bold text-rose-500">฿145</span>
+                            <button onclick="showToast('เพิ่มเมนูลงตะกร้าแล้วค่า! 🍰')" class="w-7 h-7 bg-pastelPink rounded-full flex items-center justify-center text-softBrown hover:bg-rose-300 transition">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="menu-item bg-white p-3 rounded-2xl shadow-sm border border-slate-100 flex flex-col justify-between" data-category="drink" data-name="อูจิ มัทฉะ ลาเต้">
+                        <div>
+                            <div class="w-full h-28 rounded-xl overflow-hidden mb-2 bg-amber-50">
+                                <img src="https://placehold.co/300x200/fff5e1/8d6e63?text=Matcha+Latte" alt="Matcha" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="font-bold text-xs text-slate-800 line-clamp-1">อูจิ มัทฉะ ลาเต้ 🍵</h3>
+                            <p class="text-[10px] text-slate-400 line-clamp-1 mt-0.5">ชาเขียวแท้นำเข้าจากเกียวโต หอมนุ่ม</p>
+                        </div>
+                        <div class="flex justify-between items-center mt-3">
+                            <span class="text-xs font-bold text-rose-500">฿120</span>
+                            <button onclick="showToast('เพิ่มเมนูลงตะกร้าแล้วค่า! 🍵')" class="w-7 h-7 bg-pastelBlue rounded-full flex items-center justify-center text-softBrown hover:bg-sky-200 transition">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="menu-item bg-white p-3 rounded-2xl shadow-sm border border-slate-100 flex flex-col justify-between" data-category="croissant" data-name="ครอฟเสิร์ดเนยสด">
+                        <div>
+                            <div class="w-full h-28 rounded-xl overflow-hidden mb-2 bg-purple-50">
+                                <img src="https://placehold.co/300x200/e8dff5/8d6e63?text=Taro+Croissant" alt="Croissant" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="font-bold text-xs text-slate-800 line-clamp-1">ครอฟเสิร์ดเนยสด 🥐</h3>
+                            <p class="text-[10px] text-slate-400 line-clamp-1 mt-0.5">อบสดใหม่ทุกเช้า หอมเนยฝรั่งเศสแท้</p>
+                        </div>
+                        <div class="flex justify-between items-center mt-3">
+                            <span class="text-xs font-bold text-rose-500">฿85</span>
+                            <button onclick="showToast('เพิ่มเมนูลงตะกร้าแล้วค่า! 🥐')" class="w-7 h-7 bg-pastelPurple rounded-full flex items-center justify-center text-softBrown hover:bg-purple-200 transition">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="menu-item bg-white p-3 rounded-2xl shadow-sm border border-slate-100 flex flex-col justify-between" data-category="drink" data-name="โกโก้น้องหมีเข้มข้น">
+                        <div>
+                            <div class="w-full h-28 rounded-xl overflow-hidden mb-2 bg-emerald-50">
+                                <img src="https://placehold.co/300x200/d4edda/8d6e63?text=Bear+Cocoa" alt="Cocoa" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="font-bold text-xs text-slate-800 line-clamp-1">โกโก้น้องหมีเข้มข้น 🐻</h3>
+                            <p class="text-[10px] text-slate-400 line-clamp-1 mt-0.5">โกโก้พรีเมียมท็อปด้วยมาร์ชเมลโลว์น้องหมี</p>
+                        </div>
+                        <div class="flex justify-between items-center mt-3">
+                            <span class="text-xs font-bold text-rose-500">฿110</span>
+                            <button onclick="showToast('เพิ่มเมนูลงตะกร้าแล้วค่า! 🐻')" class="w-7 h-7 bg-pastelGreen rounded-full flex items-center justify-center text-softBrown hover:bg-emerald-200 transition">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-r from-pastelPink/30 to-pastelBlue/30 p-4 rounded-2xl border border-pink-100 mt-4">
+                    <h3 class="cute-font font-bold text-slate-800 text-sm mb-1">📸 บรรยากาศภายในร้าน</h3>
+                    <p class="text-[11px] text-slate-600 mb-3">มุมถ่ายรูปแสงธรรมชาติสวยปังทุกมุม สายคอนเทนต์ห้ามพลาด!</p>
+                    <div class="grid grid-cols-3 gap-2">
+                        <img src="https://placehold.co/150x150/ffd1dc/8d6e63?text=Vibe+1" alt="Vibe" class="w-full h-20 object-cover rounded-xl shadow-xs">
+                        <img src="https://placehold.co/150x150/fff5e1/8d6e63?text=Vibe+2" alt="Vibe" class="w-full h-20 object-cover rounded-xl shadow-xs">
+                        <img src="https://placehold.co/150x150/e8dff5/8d6e63?text=Vibe+3" alt="Vibe" class="w-full h-20 object-cover rounded-xl shadow-xs">
+                    </div>
+                </div>
+            </div>
+            <!-- TAB 2: REVIEWS -->
+            <div id="tab-reviews" class="p-4 space-y-4 hidden">
+                <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+                    <button onclick="filterReviews('all', this)" class="filter-btn bg-rose-500 text-white text-[11px] px-3.5 py-1.5 rounded-full font-medium shadow-sm shrink-0 transition">ทั้งหมด (128)</button>
+                    <button onclick="filterReviews('5', this)" class="filter-btn bg-white text-slate-600 border border-slate-200 text-[11px] px-3.5 py-1.5 rounded-full font-medium shadow-sm shrink-0 transition">⭐ 5 ดาว (112)</button>
+                    <button onclick="filterReviews('photo', this)" class="filter-btn bg-white text-slate-600 border border-slate-200 text-[11px] px-3.5 py-1.5 rounded-full font-medium shadow-sm shrink-0 transition">🖼️ มีรูปภาพ (45)</button>
+                    <button onclick="filterReviews('recommend', this)" class="filter-btn bg-white text-slate-600 border border-slate-200 text-[11px] px-3.5 py-1.5 rounded-full font-medium shadow-sm shrink-0 transition">🍰 ขนมอร่อยมาก (89)</button>
+                </div>
+                <div id="review-list" class="space-y-3">
+                    <div class="review-card bg-white p-4 rounded-2xl shadow-sm border border-slate-100" data-rating="5" data-photo="true" data-recommend="true">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-2">
+                                <div class="w-9 h-9 rounded-full bg-pink-100 flex items-center justify-center font-bold text-rose-500 text-xs">👩🏻</div>
+                                <div>
+                                    <h4 class="font-bold text-xs text-slate-800">คุณพลอยใส ใสๆ</h4>
+                                    <span class="text-[10px] text-slate-400">2 วันที่แล้ว</span>
+                                </div>
+                            </div>
+                            <div class="flex text-amber-400 text-xs">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-600 mb-3 leading-relaxed">
+                            ร้านน่ารักมากกกก! 🧸 สตอเบอร์รี่ชอตเค้กคือที่สุด ไม่เลี่ยนเลย ครีมละมุนมาก ถ่ายรูปสวยทุกมุม พนักงานบริการดีเยี่ยมค่า ไว้จะกลับมาอีกแน่นอนค่ะ 💕
+                        </p>
+                        <div class="flex gap-2 mb-2">
+                            <img src="https://placehold.co/120x120/ffd1dc/8d6e63?text=Review+1" alt="User Photo" class="w-16 h-16 object-cover rounded-lg border border-slate-100">
+                            <img src="https://placehold.co/120x120/fff5e1/8d6e63?text=Review+2" alt="User Photo" class="w-16 h-16 object-cover rounded-lg border border-slate-100">
+                        </div>
+                        <div class="flex items-center gap-4 text-[10px] text-slate-400 pt-2 border-t border-slate-50">
+                            <button onclick="likeReview(this)" class="flex items-center gap-1 hover:text-rose-500 transition"><i class="fa-regular fa-heart"></i> ถูกใจ (24)</button>
+                            <span class="text-emerald-500 font-medium"><i class="fa-solid fa-circle-check"></i> ผู้ใช้ยืนยันตัวตนแล้ว</span>
+                        </div>
+                    </div>
+                    <div class="review-card bg-white p-4 rounded-2xl shadow-sm border border-slate-100" data-rating="5" data-photo="false" data-recommend="true">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-2">
+                                <div class="w-9 h-9 rounded-full bg-blue-100 flex items-center justify-center font-bold text-sky-500 text-xs">🧑🏻</div>
+                                <div>
+                                    <h4 class="font-bold text-xs text-slate-800">คุณธน ฯ.</h4>
+                                    <span class="text-[10px] text-slate-400">1 สัปดาห์ที่แล้ว</span>
+                                </div>
+                            </div>
+                            <div class="flex text-amber-400 text-xs">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-600 mb-3 leading-relaxed">
+                            มัทฉะลาเต้เข้มข้นถูกใจสายชาเขียวครับ ร้านเงียบสงบ เหมาะกับการมานั่งทำงานชิลๆ แอร์เย็นฉ่ำ ☕️✨
+                        </p>
+                        <div class="flex items-center gap-4 text-[10px] text-slate-400 pt-2 border-t border-slate-50">
+                            <button onclick="likeReview(this)" class="flex items-center gap-1 hover:text-rose-500 transition"><i class="fa-regular fa-heart"></i> ถูกใจ (12)</button>
+                            <span class="text-emerald-500 font-medium"><i class="fa-solid fa-circle-check"></i> ผู้ใช้ยืนยันตัวตนแล้ว</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FLOATING RIGHT-HAND SIDE MENU BAR -->
+        <div class="absolute right-3 top-56 z-30 flex flex-col items-center gap-2.5 bg-white/90 backdrop-blur-md p-2 rounded-2xl shadow-xl border border-pastelPink">
+            <button onclick="switchTab('highlights'); showToast('หน้าหลักสินค้า')" class="w-10 h-10 bg-pastelPink/50 hover:bg-rose-400 hover:text-white text-rose-500 rounded-xl flex items-center justify-center transition shadow-xs group relative">
+                <i class="fa-solid fa-house text-xs"></i>
+                <span class="absolute right-12 bg-slate-800 text-white text-[10px] px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none">เมนูสินค้า</span>
+            </button>
+            <button onclick="switchTab('reviews'); showToast('หน้ารีวิวทั้งหมด')" class="w-10 h-10 bg-pastelBlue/50 hover:bg-sky-400 hover:text-white text-sky-600 rounded-xl flex items-center justify-center transition shadow-xs group relative">
+                <i class="fa-solid fa-comments text-xs"></i>
+                <span class="absolute right-12 bg-slate-800 text-white text-[10px] px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none">ดูรีวิว</span>
+            </button>
+            <button onclick="openReviewModal()" class="w-10 h-10 bg-gradient-to-tr from-rose-400 to-pink-400 text-white rounded-xl flex items-center justify-center shadow-md hover:scale-105 transition group relative">
+                <i class="fa-solid fa-pen text-xs"></i>
+                <span class="absolute right-12 bg-slate-800 text-white text-[10px] px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none">เขียนรีวิว</span>
+            </button>
+            <!-- HEART BUTTON TRIGGERING SIDE MENU -->
+            <button onclick="toggleSideMenu()" class="w-10 h-10 bg-rose-100 hover:bg-rose-400 hover:text-white text-rose-500 rounded-xl flex items-center justify-center transition shadow-xs group relative">
+                <i class="fa-solid fa-heart text-xs"></i>
+                <span class="absolute right-12 bg-slate-800 text-white text-[10px] px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none">เมนูหลัก</span>
+            </button>
+        </div>
+        <!-- BOTTOM STICKY ACTION BAR -->
+        <div class="p-3 bg-white border-t border-slate-100 shrink-0 flex items-center gap-3 z-20">
+            <div class="flex-1">
+                <span class="text-[10px] text-slate-400 block">สถานะร้านตอนนี้</span>
+                <span class="text-xs font-bold text-emerald-500 flex items-center gap-1">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> เปิดให้บริการปกติ
+                </span>
+            </div>
+            <button onclick="openReviewModal()" class="px-4 py-2 bg-rose-500 text-white text-xs font-bold rounded-xl shadow-md hover:bg-rose-600 transition flex items-center gap-1.5">
+                <i class="fa-solid fa-pen"></i> เขียนรีวิวเลย
+            </button>
+        </div>
+        <!-- MODAL POPUP WINDOW FOR WRITING REVIEW -->
+        <div id="reviewModal" class="absolute inset-0 bg-black/50 backdrop-blur-xs flex items-center justify-center z-50 opacity-0 pointer-events-none transition-all duration-300 p-4">
+            <div id="modalContent" class="bg-white w-full max-w-[360px] rounded-3xl p-5 shadow-2xl border-4 border-pastelPink transform scale-95 transition-all duration-300">
+                <div class="flex justify-between items-center mb-3">
+                    <h2 class="cute-font font-bold text-slate-800 text-base flex items-center gap-2">
+                        <span>✨ เขียนรีวิวความประทับใจ</span>
+                    </h2>
+                    <button onclick="closeReviewModal()" class="w-7 h-7 bg-slate-100 text-slate-500 rounded-full flex items-center justify-center hover:bg-rose-100 hover:text-rose-500 transition">
+                        <i class="fa-solid fa-xmark text-xs"></i>
+                    </button>
+                </div>
+                
+                <form id="reviewForm" onsubmit="submitReview(event)" class="space-y-3">
+                    <div class="text-center py-2 bg-pink-50/50 rounded-xl border border-pink-100">
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">ให้คะแนนความประทับใจ</label>
+                        <div id="star-rating" class="flex justify-center gap-2 text-2xl text-slate-300 cursor-pointer">
+                            <i class="fa-solid fa-star hover:text-amber-400 transition" onclick="setRating(1)"></i>
+                            <i class="fa-solid fa-star hover:text-amber-400 transition" onclick="setRating(2)"></i>
+                            <i class="fa-solid fa-star hover:text-amber-400 transition" onclick="setRating(3)"></i>
+                            <i class="fa-solid fa-star hover:text-amber-400 transition" onclick="setRating(4)"></i>
+                            <i class="fa-solid fa-star hover:text-amber-400 transition" onclick="setRating(5)"></i>
+                        </div>
+                        <input type="hidden" id="ratingValue" value="5">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">ชื่อของคุณ</label>
+                        <input type="text" id="reviewerName" required placeholder="เช่น คุณน้ำอิง คนสวย" class="w-full px-3 py-2 text-xs bg-slate-50 rounded-xl border border-slate-200 focus:outline-none focus:border-rose-400">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">ข้อความรีวิว</label>
+                        <textarea id="reviewText" required rows="3" placeholder="บอกเล่าความประทับใจ ขนมอร่อย บรรยากาศร้าน..." class="w-full px-3 py-2 text-xs bg-slate-50 rounded-xl border border-slate-200 focus:outline-none focus:border-rose-400"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-2.5 bg-rose-500 text-white text-xs font-bold rounded-xl shadow-md hover:bg-rose-600 transition">
+                        โพสต์รีวิวเลย 💖
+                    </button>
+                </form>
+            </div>
+        </div>
+        <!-- SIDE DRAWER MENU (Matching Reference Image) -->
+        <div id="sideMenuOverlay" onclick="toggleSideMenu()" class="absolute inset-0 bg-black/40 backdrop-blur-xs z-40 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+        <div id="sideMenu" class="absolute top-0 right-0 w-[78%] h-full bg-[#fffcfd] z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col justify-between border-l-4 border-pastelPink">
+            <div>
+                <div class="flex justify-between items-center px-6 pt-6 pb-4 border-b border-pink-100">
+                    <h2 class="cute-font font-bold text-2xl text-rose-400 tracking-wider">MENU</h2>
+                    <button onclick="toggleSideMenu()" class="w-8 h-8 bg-pink-50 text-rose-400 rounded-full flex items-center justify-center hover:bg-rose-100 transition">
+                        <i class="fa-solid fa-xmark text-sm"></i>
+                    </button>
+                </div>
+                <div class="px-6 py-6 space-y-6">
+                    <a href="#" onclick="toggleSideMenu(); switchTab('highlights'); showToast('บริการของเรา');" class="flex items-center gap-4 text-slate-700 hover:text-rose-500 font-medium text-sm transition group">
+                        <span class="w-8 h-8 rounded-full bg-pink-50 flex items-center justify-center text-rose-400 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-star text-xs"></i>
+                        </span>
+                        <span>บริการของเรา</span>
+                    </a>
+                    <a href="#" onclick="toggleSideMenu(); switchTab('highlights'); showToast('ตัวอย่างงาน & เมนู');" class="flex items-center gap-4 text-slate-700 hover:text-rose-500 font-medium text-sm transition group">
+                        <span class="w-8 h-8 rounded-full bg-pink-50 flex items-center justify-center text-rose-400 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-heart text-xs"></i>
+                        </span>
+                        <span>ตัวอย่างงาน</span>
+                    </a>
+                    <a href="#" onclick="toggleSideMenu(); switchTab('highlights'); showToast('Price List');" class="flex items-center gap-4 text-slate-700 hover:text-rose-500 font-medium text-sm transition group">
+                        <span class="w-8 h-8 rounded-full bg-pink-50 flex items-center justify-center text-rose-400 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-tag text-xs"></i>
+                        </span>
+                        <span>Price List</span>
+                    </a>
+                    <a href="#" onclick="toggleSideMenu(); showToast('คอร์สสอนทำเว็บเปิดเร็วๆ นี้');" class="flex items-center gap-4 text-slate-700 hover:text-rose-500 font-medium text-sm transition group">
+                        <span class="w-8 h-8 rounded-full bg-pink-50 flex items-center justify-center text-rose-400 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-laptop text-xs"></i>
+                        </span>
+                        <span>คอร์สสอนทำเว็บ</span>
+                    </a>
+                    <a href="#" onclick="toggleSideMenu(); showToast('Goodnote App / Templates');" class="flex items-center gap-4 text-slate-700 hover:text-rose-500 font-medium text-sm transition group">
+                        <span class="w-8 h-8 rounded-full bg-pink-50 flex items-center justify-center text-rose-400 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-book-open text-xs"></i>
+                        </span>
+                        <span>Goodnote App</span>
+                    </a>
+                    <a href="#" onclick="toggleSideMenu(); showToast('ติดต่อเรา: อารีย์ ซอย 3');" class="flex items-center gap-4 text-slate-700 hover:text-rose-500 font-medium text-sm transition group">
+                        <span class="w-8 h-8 rounded-full bg-pink-50 flex items-center justify-center text-rose-400 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-envelope text-xs"></i>
+                        </span>
+                        <span>ติดต่อเรา</span>
+                    </a>
+                </div>
+            </div>
+            <div class="px-6 pb-6 text-center border-t border-pink-100 pt-4">
+                <span class="cute-font font-bold text-rose-400 text-sm tracking-widest block">CHUBBYBEAR.LAND</span>
+            </div>
+        </div>
+        <!-- TOAST NOTIFICATION POPUP -->
+        <div id="toast" class="absolute bottom-16 left-1/2 -translate-x-1/2 bg-slate-800/90 text-white text-xs px-4 py-2 rounded-full shadow-lg opacity-0 pointer-events-none transition-all duration-300 z-50 flex items-center gap-2">
+            <i class="fa-solid fa-heart text-rose-400"></i>
+            <span id="toast-message">แจ้งเตือนสำเร็จ</span>
+        </div>
+    </div>
+    <!-- JAVASCRIPT INTERACTIVE LOGIC -->
+    <script>
+        function switchTab(tabName) {
+            document.getElementById('tab-highlights').classList.add('hidden');
+            document.getElementById('tab-reviews').classList.add('hidden');
+            document.getElementById('btn-highlights').className = 'flex-1 py-3 text-xs font-semibold text-slate-400 border-b-2 border-transparent transition';
+            document.getElementById('btn-reviews').className = 'flex-1 py-3 text-xs font-semibold text-slate-400 border-b-2 border-transparent transition';
+            if (tabName === 'highlights') {
+                document.getElementById('tab-highlights').classList.remove('hidden');
+                document.getElementById('btn-highlights').className = 'flex-1 py-3 text-xs font-semibold text-rose-500 border-b-2 border-rose-500 transition';
+            } else if (tabName === 'reviews') {
+                document.getElementById('tab-reviews').classList.remove('hidden');
+                document.getElementById('btn-reviews').className = 'flex-1 py-3 text-xs font-semibold text-rose-500 border-b-2 border-rose-500 transition';
+            }
+        }
+        function openReviewModal() {
+            const modal = document.getElementById('reviewModal');
+            const content = document.getElementById('modalContent');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+            content.classList.remove('scale-95');
+            content.classList.add('scale-100');
+        }
+        function closeReviewModal() {
+            const modal = document.getElementById('reviewModal');
+            const content = document.getElementById('modalContent');
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+        }
+        function toggleSideMenu() {
+            const sideMenu = document.getElementById('sideMenu');
+            const overlay = document.getElementById('sideMenuOverlay');
+            
+            if (sideMenu.classList.contains('translate-x-full')) {
+                sideMenu.classList.remove('translate-x-full');
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                overlay.classList.add('opacity-100');
+            } else {
+                sideMenu.classList.add('translate-x-full');
+                overlay.classList.remove('opacity-100');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+            }
+        }
+        function filterCategory(category, btn) {
+            document.querySelectorAll('.category-btn').forEach(b => {
+                b.className = 'category-btn bg-white text-slate-600 border border-slate-200 text-[11px] px-3 py-1.5 rounded-xl font-medium shadow-sm shrink-0 transition flex items-center gap-1';
+            });
+            btn.className = 'category-btn bg-rose-500 text-white text-[11px] px-3 py-1.5 rounded-xl font-medium shadow-sm shrink-0 transition flex items-center gap-1';
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => {
+                const itemCat = item.getAttribute('data-category');
+                if (category === 'all' || itemCat === category) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+        function filterMenuItems() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => {
+                const name = item.getAttribute('data-name').toLowerCase();
+                if (name.includes(query)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').innerText = message;
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            toast.classList.add('opacity-100');
+            setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 2500);
+        }
+        function likeReview(btn) {
+            if (btn.classList.contains('text-rose-500')) {
+                btn.classList.remove('text-rose-500');
+                btn.innerHTML = '<i class="fa-regular fa-heart"></i> ถูกใจ';
+            } else {
+                btn.classList.add('text-rose-500');
+                btn.innerHTML = '<i class="fa-solid fa-heart"></i> ถูกใจแล้ว';
+                showToast('ถูกใจรีวิวนี้แล้วจ้า ✨');
+            }
+        }
+        function setRating(rating) {
+            document.getElementById('ratingValue').value = rating;
+            const stars = document.querySelectorAll('#star-rating i');
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.className = 'fa-solid fa-star text-amber-400 transition';
+                } else {
+                    star.className = 'fa-solid fa-star text-slate-300 transition';
+                }
+            });
+        }
+        function filterReviews(type, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.className = 'filter-btn bg-white text-slate-600 border border-slate-200 text-[11px] px-3.5 py-1.5 rounded-full font-medium shadow-sm shrink-0 transition';
+            });
+            btn.className = 'filter-btn bg-rose-500 text-white text-[11px] px-3.5 py-1.5 rounded-full font-medium shadow-sm shrink-0 transition';
+            const cards = document.querySelectorAll('.review-card');
+            cards.forEach(card => {
+                const rating = card.getAttribute('data-rating');
+                const hasPhoto = card.getAttribute('data-photo');
+                const isRecommend = card.getAttribute('data-recommend');
+                if (type === 'all') {
+                    card.style.display = 'block';
+                } else if (type === '5' && rating === '5') {
+                    card.style.display = 'block';
+                } else if (type === 'photo' && hasPhoto === 'true') {
+                    card.style.display = 'block';
+                } else if (type === 'recommend' && isRecommend === 'true') {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        function submitReview(e) {
+            e.preventDefault();
+            const name = document.getElementById('reviewerName').value;
+            const text = document.getElementById('reviewText').value;
+            const rating = document.getElementById('ratingValue').value;
+            switchTab('reviews');
+            const reviewList = document.getElementById('review-list');
+            const newCard = document.createElement('div');
+            newCard.className = 'review-card bg-white p-4 rounded-2xl shadow-sm border border-slate-100 animate-pulse';
+            
+            let starsHtml = '';
+            for(let i=0; i<rating; i++) { starsHtml += '<i class="fa-solid fa-star"></i>'; }
+            newCard.innerHTML = `
+                <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                        <div class="w-9 h-9 rounded-full bg-pink-100 flex items-center justify-center font-bold text-rose-500 text-xs">✨</div>
+                        <div>
+                            <h4 class="font-bold text-xs text-slate-800">${name}</h4>
+                            <span class="text-[10px] text-slate-400">เมื่อสักครู่นี้</span>
+                        </div>
+                    </div>
+                    <div class="flex text-amber-400 text-xs">${starsHtml}</div>
+                </div>
+                <p class="text-xs text-slate-600 mb-3 leading-relaxed">${text}</p>
+                <div class="flex items-center gap-4 text-[10px] text-slate-400 pt-2 border-t border-slate-50">
+                    <button onclick="likeReview(this)" class="flex items-center gap-1 hover:text-rose-500 transition"><i class="fa-regular fa-heart"></i> ถูกใจ (0)</button>
+                    <span class="text-emerald-500 font-medium"><i class="fa-solid fa-circle-check"></i> รีวิวสดๆ ร้อนๆ</span>
+                </div>
+            `;
+            reviewList.prepend(newCard);
+            closeReviewModal();
+            showToast('ส่งรีวิวสำเร็จ ขอบคุณสำหรับความน่ารักค่ะ! 💖');
+            document.getElementById('reviewForm').reset();
+            setRating(5);
+        }
+    </script>
+</body>
+</html>
